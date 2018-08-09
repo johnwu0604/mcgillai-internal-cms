@@ -1,0 +1,18 @@
+{
+    "name": "mcgillai-cms-svr",
+    "version": "1.0.0",
+    "description": "The backend for the McGill AI Society content management system.",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "author": "John Wu",
+    "dependencies": {
+        "body-parser": "^1.15.0",
+        "dotenv": "^4.0.0",
+        "express": "^4.13.4",
+        "request": "^2.72.0",
+        "pg": "^6.3.1",
+        "pg-promise": "^5.9.3"
+    }
+}
