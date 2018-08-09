@@ -259,7 +259,7 @@ INSERT INTO registration (
     id,
     event_id,
     member_id,
-    sign_in
+    signed_in
 ) VALUES (
     '1',
     '1',
