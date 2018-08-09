@@ -1,7 +1,14 @@
+var MemberController = require('../controllers/memberController')
+
 module.exports = function(app) {
     
+    /**
+     * Retrieve all members in the database
+     */
     app.get('/members', (req, res) => {
-        res.status(200).send('Members')
+        MemberController.getAllMembers(function (members) {
+            res.status(200).send(members)
+        })
     })
 
 }
