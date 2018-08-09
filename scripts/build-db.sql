@@ -220,7 +220,7 @@ DROP TABLE IF EXISTS event;
 CREATE TABLE event (
     id varchar(255) NOT NULL UNIQUE,
     name varchar(255),
-    desc varchar(5000),
+    description varchar(5000),
     date varchar(255),
     location varchar(255),
     photo_url varchar(255)
@@ -229,7 +229,7 @@ CREATE TABLE event (
 INSERT INTO event (
     id,
     name,
-    desc,
+    description,
     date,
     location,
     photo_url
