@@ -204,7 +204,7 @@ INSERT INTO member (
     'default@gmail.com',
     '1234567890',
     'https://pdf.com',
-    true,
+    TRUE,
     '1',
     '1',
     '1',
@@ -220,7 +220,7 @@ DROP TABLE IF EXISTS event;
 CREATE TABLE event (
     id varchar(255) NOT NULL UNIQUE,
     name varchar(255),
-    desc varchar(255),
+    desc varchar(5000),
     date varchar(255),
     location varchar(255),
     photo_url varchar(255)
@@ -264,7 +264,7 @@ INSERT INTO registration (
     '1',
     '1',
     '1',
-    false
+    FALSE
 );
 
 SELECT * FROM registration;
