@@ -170,7 +170,6 @@ DROP TABLE IF EXISTS member;
 
 CREATE TABLE member (
     id varchar(255) NOT NULL UNIQUE,
-    qr_code_url varchar(255),
     first_name varchar(255),
     last_name varchar(255),
     email varchar(255),
@@ -185,7 +184,6 @@ CREATE TABLE member (
 
 INSERT INTO member (
     id,
-    qr_code_url,
     first_name,
     last_name,
     email,
@@ -198,7 +196,6 @@ INSERT INTO member (
     member_type_id
 ) VALUES (
     '1',
-    'https://user-images.githubusercontent.com/10589755/29107602-89773dd0-7d0d-11e7-934b-5d072f62efdb.png',
     'Default',
     'Member',
     'default@gmail.com',

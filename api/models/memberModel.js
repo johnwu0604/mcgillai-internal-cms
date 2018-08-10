@@ -5,7 +5,6 @@ var SchemaObject = require('schema-object')
  */
 var Member = new SchemaObject({
     id: String,
-    qr_code_url: String,
     first_name: String,
     last_name: String,
     email: String,
