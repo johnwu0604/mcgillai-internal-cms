@@ -4,7 +4,8 @@
     "description": "The backend for the McGill AI Society content management system.",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js"
+        "start": "node server.js",
+        "build": "webpack --config webpack.config.js"
     },
     "author": "John Wu",
     "dependencies": {
@@ -15,6 +16,20 @@
         "pg": "^6.3.1",
         "pg-promise": "^5.9.3",
         "schema-object": "^4.0.11",
-        "uuid": "^3.1.0"
+        "uuid": "^3.1.0",
+        "path": "0.12.7",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "file-loader": "^1.1.11",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "webpack": "^4.11.1",
+        "webpack-dev-server": "^3.1.4"
+    },
+    "devDependencies": {
+        "webpack-cli": "^3.1.0",
+        "webpack-command": "^0.4.1"
     }
 }
