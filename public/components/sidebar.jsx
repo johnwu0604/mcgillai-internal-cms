@@ -4,14 +4,14 @@ class Sidebar extends React.Component {
 
     render() {
         return(
-            <ul class="sidebar navbar-nav">
-                <li class="nav-item active">
-                <a class="nav-link" href="/">
+            <ul className="sidebar navbar-nav">
+                <li className="nav-item active">
+                <a className="nav-link" href="/">
                     <span>Dashboard</span>
                 </a>
                 </li>
-                <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <li className="nav-item active">
+                <a className="nav-link" href="#">
                     <span>Members</span></a>
                 </li>
             </ul>

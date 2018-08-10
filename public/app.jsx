@@ -11,9 +11,7 @@ class App extends React.Component {
         <div id="wrapper">
           <Sidebar></Sidebar>
           <div id="content-wrapper">
-            <div class="container-fluid">
               <Table></Table>
-            </div>
           </div>
         </div>
       </div>

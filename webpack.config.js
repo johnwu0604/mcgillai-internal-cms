@@ -4,9 +4,10 @@ var config = {
   entry: './public/main.js',
   output: {
     path: path.resolve(__dirname),
-    filename: 'public/index.js'
+    filename: 'public/index.js',
+    crossOriginLoading: 'anonymous',
   },
-  mode: "development",
+  mode: 'development',
   devServer: {
     inline: true,
     port: 5000
