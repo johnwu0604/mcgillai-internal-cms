@@ -29,4 +29,13 @@ module.exports = function(app) {
         })
     })
 
+    /**
+     * Endpoint to update a member
+     */
+    app.put('/member/:id', (req, res) => {
+        MemberController.updateMember(req, function (members) {
+            res.status(200).send(members)
+        })
+    })
+
 }

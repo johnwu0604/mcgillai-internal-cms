@@ -48,6 +48,32 @@ module.exports = {
                 return callback(members)
             })
         })
+    },
+
+    /**
+     * Updates a member's information
+     */
+    updateMember: (req, callback) => {
+        MemberService.find(req.params.id, function (result) {
+            var member = new Member()
+            member.id = req.body.id || result.id,
+            member.qr_code_url = req.body.qr_code_url || result.qr_code_url
+            member.first_name = req.body.first_name || result.first_name,
+            member.last_name = req.body.last_name || result.last_name,
+            member.email = req.body.email || result.email,
+            member.phone = req.body.phone || result.phone,
+            member.resume_url = req.body.resume_url || result.resume_url,
+            member.subscribed = req.body.subscribed || result.subscribed,
+            member.school = req.body.school || result.school,
+            member.year = req.body.year || result.year,
+            member.degree = req.body.degree || result.degree, 
+            member.member_type = req.body.member_type || result.member_type
+            MemberService.update(member, function () {
+                MemberService.findAll(function (members) {
+                    return callback(members)
+                })
+            })
+        })
     }
 
 }
