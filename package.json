@@ -1,7 +1,7 @@
 {
     "name": "mcgillai-cms-svr",
     "version": "1.0.0",
-    "description": "The backend for the McGill AI Society content management system.",
+    "description": "McGill AI Society content management system.",
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
