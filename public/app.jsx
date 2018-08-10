@@ -1,12 +1,21 @@
 import React from 'react';
 import Table from './components/table.jsx'
+import Navbar from './components/navbar.jsx'
+import Sidebar from './components/sidebar.jsx'
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Members</h1>
-        <Table></Table>
+        <Navbar></Navbar>
+        <div id="wrapper">
+          <Sidebar></Sidebar>
+          <div id="content-wrapper">
+            <div class="container-fluid">
+              <Table></Table>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
