@@ -94,7 +94,7 @@ getMemberTypeId = function(member_type) {
 module.exports = {
 
     /**
-     * Queries all members from the database
+     * Processes query to retrieve all members from the database
      */
     findAll: (callback) => {
         db.query(QUERY_ALL_MEMBERS, [], function (err, data) {
@@ -106,7 +106,7 @@ module.exports = {
     },
 
     /**
-     * Adds a new member to the database
+     * Processes query to add a new member to the database
      */
     create: (member, callback) => {
         db.query(QUERY_ADD_MEMBER, [
@@ -122,6 +122,18 @@ module.exports = {
             getDegreeId(member.degree),
             getMemberTypeId(member.member_type)
         ], function (err, data) {
+            if (err) {
+            return console.error('error running query', err)
+            }
+            return callback()
+        })
+    },
+
+    /**
+     * Processes query to delete member from the database
+     */
+    delete: (id, callback) => {
+        db.query(QUERY_DELETE_MEMBER, [id], function (err, data) {
             if (err) {
             return console.error('error running query', err)
             }

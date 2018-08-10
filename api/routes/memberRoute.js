@@ -20,4 +20,13 @@ module.exports = function(app) {
         })
     })
 
+    /**
+     * Endpoint to delete a member
+     */
+    app.delete('/member/:id', (req, res) => {
+        MemberController.deleteMember(req, function(members) {
+            res.status(200).send(members)
+        })
+    })
+
 }

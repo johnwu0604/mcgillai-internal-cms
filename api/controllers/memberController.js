@@ -37,6 +37,17 @@ module.exports = {
                 return callback(members)
             })
         })
+    },
+
+    /**
+     * Deletes a member from the database
+     */
+    deleteMember: (req, callback) => {
+        MemberService.delete(req.params.id, function() {
+            MemberService.findAll(function (members) {
+                return callback(members)
+            })
+        })
     }
 
 }
