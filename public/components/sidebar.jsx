@@ -11,7 +11,7 @@ class Sidebar extends React.Component {
                 </a>
                 </li>
                 <li className="nav-item active">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/members">
                     <span>Members</span></a>
                 </li>
             </ul>

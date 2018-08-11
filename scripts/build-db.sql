@@ -57,7 +57,7 @@ INSERT INTO year (
     name
 ) VALUES (
     '1',
-    'U1'
+    'U0'
 );
 
 INSERT INTO year (
@@ -65,7 +65,7 @@ INSERT INTO year (
     name
 ) VALUES (
     '2',
-    'U2'
+    'U1'
 );
 
 INSERT INTO year (
@@ -73,7 +73,7 @@ INSERT INTO year (
     name
 ) VALUES (
     '3',
-    'U3'
+    'U2'
 );
 
 INSERT INTO year (
@@ -81,7 +81,7 @@ INSERT INTO year (
     name
 ) VALUES (
     '4',
-    'U4+'
+    'U3+'
 );
 
 SELECT * FROM year;

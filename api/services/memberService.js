@@ -32,16 +32,16 @@ getYearId =  function(year) {
     // map year id
     var year_id = '1'
     switch(year) {
-        case 'U1':
+        case 'U0':
             year_id = '1'
             break
-        case 'U2':
+        case 'U1':
             year_id = '2'
             break
-        case 'U3':
+        case 'U2':
             year_id = '3'
             break
-        case 'U4+':
+        case 'U3+':
             year_id = '4'
             break
         default:

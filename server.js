@@ -21,6 +21,10 @@ app.get('/test', (req, res) => {
 
 require('./api/routes/memberRoute')(app)
 
+app.get('/*', function response(req, res) {
+  res.sendFile(__dirname + '/public/index.html')
+})
+
 app.listen(port)
 console.log('App listing on port ' + port)
 
