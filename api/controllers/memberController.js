@@ -21,7 +21,6 @@ module.exports = {
     createMember: (req, callback) => {
         var member = new Member()
         member.id = req.body.id
-        member.qr_code_url = req.body.qr_code_url
         member.first_name = req.body.first_name,
         member.last_name = req.body.last_name,
         member.email = req.body.email,
@@ -57,7 +56,6 @@ module.exports = {
         MemberService.find(req.params.id, function (result) {
             var member = new Member()
             member.id = req.body.id || result.id,
-            member.qr_code_url = req.body.qr_code_url || result.qr_code_url
             member.first_name = req.body.first_name || result.first_name,
             member.last_name = req.body.last_name || result.last_name,
             member.email = req.body.email || result.email,
