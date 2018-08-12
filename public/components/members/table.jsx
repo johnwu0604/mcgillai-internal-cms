@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { CSVLink } from 'react-csv'
 
 class MemberTable extends React.Component {
 
@@ -69,20 +70,41 @@ class MemberTable extends React.Component {
 
     createTable() {
         let table = []
-        for (let i = 0; i < this.state.members.length; i++) {
-            table.push(<tr key={this.state.members[i].id}>
-                        <td>{this.state.members[i].id}</td>
-                        <td>{this.state.members[i].first_name}</td>
-                        <td>{this.state.members[i].last_name}</td>
-                        <td>{this.state.members[i].email}</td>
-                        <td>{this.state.members[i].phone}</td>
-                        <td>{this.state.members[i].resume_url}</td>
-                        <td>{this.state.members[i].subscribed.toString()}</td>
-                        <td>{this.state.members[i].school}</td>
-                        <td>{this.state.members[i].year}</td>
-                        <td>{this.state.members[i].degree}</td>
-                        <td>{this.state.members[i].member_type}</td>
+        for (let i = 0; i < this.state.membersFiltered.length; i++) {
+            table.push(<tr key={this.state.membersFiltered[i].id}>
+                        <td>{this.state.membersFiltered[i].id}</td>
+                        <td>{this.state.membersFiltered[i].first_name}</td>
+                        <td>{this.state.membersFiltered[i].last_name}</td>
+                        <td><a href={'mailto:'+this.state.membersFiltered[i].email}>{this.state.membersFiltered[i].email}</a></td>
+                        <td>{this.state.membersFiltered[i].phone}</td>
+                        <td><a href={this.state.membersFiltered[i].resume_url} target="__blank">{this.state.membersFiltered[i].resume_url}</a></td>
+                        <td>{this.state.membersFiltered[i].subscribed.toString()}</td>
+                        <td>{this.state.membersFiltered[i].school}</td>
+                        <td>{this.state.membersFiltered[i].year}</td>
+                        <td>{this.state.membersFiltered[i].degree}</td>
+                        <td>{this.state.membersFiltered[i].member_type}</td>
                        </tr>)
+        }
+        return table
+    }
+
+    buildCSV() {
+        var table = []
+        table.push(['Student ID', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Resume URL', 'Subcribed To Newsletter', 'School', 'Year', 'Degree', 'Member Type'])
+        for (let i = 0; i < this.state.membersFiltered.length; i++) {
+            var item = []
+            item.push(this.state.membersFiltered[i].id)
+            item.push(this.state.membersFiltered[i].first_name)
+            item.push(this.state.membersFiltered[i].last_name)
+            item.push(this.state.membersFiltered[i].email)
+            item.push(this.state.membersFiltered[i].phone)
+            item.push(this.state.membersFiltered[i].resume_url)
+            item.push(this.state.membersFiltered[i].subscribed.toString())
+            item.push(this.state.membersFiltered[i].school)
+            item.push(this.state.membersFiltered[i].year)
+            item.push(this.state.membersFiltered[i].degree)
+            item.push(this.state.membersFiltered[i].member_type)
+            table.push(item)
         }
         return table
     }
@@ -108,10 +130,13 @@ class MemberTable extends React.Component {
                         </div>
                         <div className="float-right">
                             <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="">Search</span>
-                            </div>
-                            <input value={this.state.searchValue} onChange={evt => this.updateSearchValue(evt)}/>
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="">Search</span>
+                                </div>
+                                <input value={this.state.searchValue} onChange={evt => this.updateSearchValue(evt)}/>
+                                <CSVLink data={this.buildCSV()} filename={"mcgillai-members.csv"}  className="btn btn-success" target="_blank">
+                                    Download As CSV
+                                </CSVLink>
                             </div>
                         </div>
                     </div>
