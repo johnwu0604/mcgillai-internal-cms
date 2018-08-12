@@ -367,3 +367,7 @@
       width: calc(100% - 90px);
     }
   }
+
+  td, th {
+    font-size: 10px;
+  }

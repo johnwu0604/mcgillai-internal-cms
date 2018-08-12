@@ -8,7 +8,8 @@ class MemberTable extends React.Component {
         this.state = {
             members: {},
             membersFiltered: {},
-            searchValue: ''
+            searchValue: '',
+            deleteMemberId: ''
         }
     }
 
@@ -20,6 +21,24 @@ class MemberTable extends React.Component {
                   membersFiltered: res.data
             })
           })
+    }
+
+    deleteMember(evt) {
+        evt.preventDefault()
+        axios.delete('/api/member/'+ this.state.deleteMemberId, { params: {} })
+        .then(res => {
+            this.setState({ 
+                deleteMemberId: '', 
+                members: res.data,
+                membersFiltered: res.data
+          })
+        })
+    }
+
+    onDeleteMemberIdChange(evt) {
+        this.setState({
+            deleteMemberId: evt.target.value
+        })
     }
 
     updateSearchValue(evt) {
@@ -52,7 +71,7 @@ class MemberTable extends React.Component {
         let table = []
         for (let i = 0; i < this.state.members.length; i++) {
             table.push(<tr key={this.state.members[i].id}>
-                        <th scope="row">{this.state.members[i].id}</th>
+                        <td>{this.state.members[i].id}</td>
                         <td>{this.state.members[i].first_name}</td>
                         <td>{this.state.members[i].last_name}</td>
                         <td>{this.state.members[i].email}</td>
@@ -71,11 +90,21 @@ class MemberTable extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <a class="btn btn-primary" href="/add-member">Add New Member</a>    
-                <div className="card mb-3">
+                <div className="col-md-6 float-left">
+                    <a className="btn btn-primary" href="/add-member">Add New Member</a>  
+                </div>  
+                <div className="col-md-6 float-right">
+                    <form className="form-inline" onSubmit={evt => this.deleteMember(evt)}>
+                        <div className="form-group">
+                            <input className="form-control" placeholder="Student ID" value={this.state.deleteMemberId} onChange={evt => this.onDeleteMemberIdChange(evt)}></input>
+                        </div>
+                        <button type="submit" className="btn btn-danger">Delete Member</button>
+                    </form>
+                </div>  
+                <div className="col-md-12 card mb-3">
                     <div className="card-header">
                         <div className="float-left">
-                            <h4>McGill AI Society Members</h4>
+                            <h5>McGill AI Society Members</h5>
                         </div>
                         <div className="float-right">
                             <div className="input-group">

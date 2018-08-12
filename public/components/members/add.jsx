@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
+import qs from 'qs'
 
 class AddMember extends React.Component {
 
     constructor() {
         super()
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             form_id: '',
             form_first_name: '',
@@ -81,21 +81,22 @@ class AddMember extends React.Component {
         })
     }
 
-    handleSubmit(event) {
-        event.preventDefault()
-        console.log(this.state.form_id)
-        var formData = new FormData()
-        formData.append('id', this.state.form_id)
-        formData.append('first_name', this.state.form_first_name)
-        formData.append('last_name', this.state.form_last_name)
-        formData.append('email', this.state.form_email)
-        formData.append('phone', this.state.form_phone)
-        formData.append('resume_url', this.state.form_resume)
-        formData.append('subscribed', true)
-        formData.append('school', this.state.form_school)
-        formData.append('year', this.state.form_year)
-        formData.append('degreee', this.state.form_degree)
-        formData.append('member_type', this.state.form_type)
+    handleSubmit(evt) {
+        evt.preventDefault()
+        var self = this
+        var formData = qs.stringify({
+            'id': this.state.form_id,
+            'first_name': this.state.form_first_name,
+            'last_name': this.state.form_last_name,
+            'email': this.state.form_email,
+            'phone': this.state.form_phone,
+            'resume_url': this.state.form_resume,
+            'subscribed': true,
+            'school': this.state.form_school,
+            'year': this.state.form_year,
+            'degreee': this.state.form_degree,
+            'member_type': this.state.form_type
+        })
         axios({
             method: 'post',
             url: '/api/member',
@@ -103,7 +104,7 @@ class AddMember extends React.Component {
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
             })
             .then(function (response) {
-                this.setState({
+                self.setState({
                     form_id: '',
                     form_first_name: '',
                     form_last_name: '',
@@ -114,12 +115,12 @@ class AddMember extends React.Component {
                     form_year: 'U0',
                     form_degree: 'Undergraduate',
                     form_type: 'Subscriber',
-                    message: 'New member successfully created'
+                    message: 'New member successfully created!'
                 })
             })
             .catch(function (response) {
-                this.setState({
-                    message: 'Error occurred'
+                self.setState({
+                    message: 'Error occurred :('
                 })
         })
     }
@@ -127,7 +128,7 @@ class AddMember extends React.Component {
     render() {
         return(
             <div className="container-fluid">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={evt => this.handleSubmit(evt)}>
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label>Student Number</label>
@@ -264,7 +265,7 @@ class AddMember extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary" href="/members">Add Member</button>
+                    <button type="submit" className="btn btn-primary">Add Member</button>
                 </form>
                 <p>{this.state.message}</p>
             </div>
