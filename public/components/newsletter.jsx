@@ -21,11 +21,27 @@ class Newsletter extends React.Component {
 
     handleSubmit(evt) {
         evt.preventDefault()
-        var self = this
+        var emails = ''
+        axios.get('/api/members')
+          .then(res => {
+            var members = res.data
+            for (let i = 0; i < members.length; i++) {
+                if ( (members[i].member_type == 'Subscriber' && this.state.subscribers) ||
+                     (members[i].member_type == 'Active Member' && this.state.active_members) ||
+                     (members[i].member_type == 'Contributer' && this.state.contributers) ||
+                     (members[i].member_type == 'Executive' && this.state.executives ) ) {
+                        emails = emails + members[i].email + ', '
+                }
+            }
+            this.sendNewsletter(this, emails)
+        })
+    }
+
+    sendNewsletter(self, emails) {
         var formData = qs.stringify({
             'sender_name': this.state.sender_name,
             'sender_email': this.state.sender_email,
-            'emails': 'john.wu@mail.mcgill.ca',
+            'emails': emails,
             'subject': this.state.subject,
             'template': this.state.template
         })
