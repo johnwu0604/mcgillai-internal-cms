@@ -1,8 +1,9 @@
-import React from 'react';
+import React from 'react'
 import MemberTable from './components/members/table.jsx'
 import AddMember from './components/members/add.jsx'
 import Navbar from './components/navbar.jsx'
 import Sidebar from './components/sidebar.jsx'
+import Newsletter from './components/newsletter.jsx'
 
 import {
   BrowserRouter as Router,
@@ -25,6 +26,7 @@ class App extends React.Component {
                 <Route path="/" exact={true} render={() => { return ( <h1>Home page</h1> ) }}/>
                 <Route path="/members" component={MemberTable} />
                 <Route path="/add-member" component={AddMember} />
+                <Route path="/newsletter" component={Newsletter} />
               </div>
             </div>
           </div>
