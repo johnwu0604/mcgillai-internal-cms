@@ -1,6 +1,6 @@
 var db = require('../../lib/db')
 const QUERY_MEMBER = 'SELECT * FROM member WHERE member.id = $1'
-const QUERY_ALL_MEMBERS = 'SELECT member.id, member.first_name, member.last_name, member.email, member.phone, member.resume_url, member.subscribed, pronoung.name AS pronoun, school.name AS school, year.name AS year, degree.name AS degree, member_type.name AS member_type \
+const QUERY_ALL_MEMBERS = 'SELECT member.id, member.first_name, member.last_name, member.email, member.phone, member.resume_url, member.subscribed, pronoun.name AS pronoun, school.name AS school, year.name AS year, degree.name AS degree, member_type.name AS member_type \
 FROM member INNER JOIN pronoun ON member.pronoun_id=pronoun.id INNER JOIN school ON member.school_id=school.id INNER JOIN year ON member.year_id=year.id INNER JOIN degree ON member.degree_id=degree.id INNER JOIN member_type ON member.member_type_id=member_type.id'
 const QUERY_DELETE_MEMBER = 'DELETE FROM member WHERE id = $1'
 const QUERY_ADD_MEMBER = 'INSERT INTO member (id, first_name, last_name, email, phone, resume_url, subscribed, pronoun_id, school_id, year_id, degree_id, member_type_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)'
