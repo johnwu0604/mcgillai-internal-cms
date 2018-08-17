@@ -173,7 +173,7 @@ CREATE TABLE pronoun (
     name varchar(255) NOT NULL
 );
 
-INSERT INTO member_type (
+INSERT INTO pronoun (
     id,
     name
 ) VALUES (
@@ -181,7 +181,7 @@ INSERT INTO member_type (
     'He'
 );
 
-INSERT INTO member_type (
+INSERT INTO pronoun (
     id,
     name
 ) VALUES (
@@ -189,7 +189,7 @@ INSERT INTO member_type (
     'She'
 );
 
-INSERT INTO member_type (
+INSERT INTO pronoun (
     id,
     name
 ) VALUES (
@@ -197,7 +197,7 @@ INSERT INTO member_type (
     'They'
 );
 
-INSERT INTO member_type (
+INSERT INTO pronoun (
     id,
     name
 ) VALUES (
