@@ -13,6 +13,7 @@ class AddMember extends React.Component {
             form_email: '',
             form_phone: '',
             form_resume: '',
+            form_pronoun: 'She',
             form_school: 'McGill',
             form_year: 'U0',
             form_degree: 'Undergraduate',
@@ -57,6 +58,12 @@ class AddMember extends React.Component {
         })
     }
 
+    onPronounChange(evt) {
+        this.setState({
+            form_pronoun: evt.target.value
+        })
+    }
+
     onSchoolChange(evt) {
         this.setState({
             form_school: evt.target.value
@@ -92,6 +99,7 @@ class AddMember extends React.Component {
             'phone': this.state.form_phone,
             'resume_url': this.state.form_resume,
             'subscribed': true,
+            'pronoun': this.state.form_pronoun,
             'school': this.state.form_school,
             'year': this.state.form_year,
             'degreee': this.state.form_degree,
@@ -111,6 +119,7 @@ class AddMember extends React.Component {
                     form_email: '',
                     form_phone: '',
                     form_resume: '',
+                    form_pronoun: 'She',
                     form_school: 'McGill',
                     form_year: 'U0',
                     form_degree: 'Undergraduate',
@@ -153,6 +162,35 @@ class AddMember extends React.Component {
                         <div class="form-group col-md-6">
                             <label>Resume URL</label>
                             <input className="form-control" value={this.state.form_resume} onChange={evt => this.onResumeChange(evt)}></input>
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label>Pronoun</label>
+                            <div>
+                                <div className="form-check">
+                                    <input onChange={evt => this.onPronounChange(evt)} className="form-check-input" name="pronoun" type="radio" value="He" checked={this.state.form_pronoun === "He"}></input>
+                                    <label className="form-check-label">
+                                        He 
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input onChange={evt => this.onPronounChange(evt)} className="form-check-input" name="pronoun" value="She" type="radio" checked={this.state.form_pronoun === "She"}></input>
+                                    <label className="form-check-label">
+                                        She
+                                    </label>
+                                </div>
+                                <div className="form-check disabled">
+                                    <input onChange={evt => this.onPronounChange(evt)} className="form-check-input" name="pronoun" value="They" type="radio" checked={this.state.form_pronoun === "They"}></input>
+                                    <label className="form-check-label">
+                                        They
+                                    </label>
+                                </div>
+                                <div className="form-check disabled">
+                                    <input onChange={evt => this.onPronounChange(evt)} className="form-check-input" name="pronoun" value="Other" type="radio" checked={this.state.form_pronoun === "Other"}></input>
+                                    <label className="form-check-label">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <div className="form-group col-md-6">
                             <label>School</label>

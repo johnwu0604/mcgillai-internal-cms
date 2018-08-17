@@ -11,6 +11,7 @@ var Member = new SchemaObject({
     phone: String,
     resume_url: String,
     subscribed: Boolean,
+    pronoun: String,
     school: String,
     year: String,
     degree: String, 

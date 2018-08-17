@@ -1,10 +1,10 @@
 var db = require('../../lib/db')
 const QUERY_MEMBER = 'SELECT * FROM member WHERE member.id = $1'
-const QUERY_ALL_MEMBERS = 'SELECT member.id, member.first_name, member.last_name, member.email, member.phone, member.resume_url, member.subscribed, school.name AS school, year.name AS year, degree.name AS degree, member_type.name AS member_type \
-FROM member INNER JOIN school ON member.school_id=school.id INNER JOIN year ON member.year_id=year.id INNER JOIN degree ON member.degree_id=degree.id INNER JOIN member_type ON member.member_type_id=member_type.id'
+const QUERY_ALL_MEMBERS = 'SELECT member.id, member.first_name, member.last_name, member.email, member.phone, member.resume_url, member.subscribed, pronoung.name AS pronoun, school.name AS school, year.name AS year, degree.name AS degree, member_type.name AS member_type \
+FROM member INNER JOIN pronoun ON member.pronoun_id=pronoun.id INNER JOIN school ON member.school_id=school.id INNER JOIN year ON member.year_id=year.id INNER JOIN degree ON member.degree_id=degree.id INNER JOIN member_type ON member.member_type_id=member_type.id'
 const QUERY_DELETE_MEMBER = 'DELETE FROM member WHERE id = $1'
-const QUERY_ADD_MEMBER = 'INSERT INTO member (id, first_name, last_name, email, phone, resume_url, subscribed, school_id, year_id, degree_id, member_type_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
-const QUERY_UPDATE_MEMBER = 'UPDATE member SET id = $1, first_name = $2, last_name = $3, email = $4, phone = $5, resume_url = $6, subscribed = $7, school_id = $8, year_id = $9, degree_id = $10, member_type_id = $11 WHERE id = $1'
+const QUERY_ADD_MEMBER = 'INSERT INTO member (id, first_name, last_name, email, phone, resume_url, subscribed, pronoun_id, school_id, year_id, degree_id, member_type_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)'
+const QUERY_UPDATE_MEMBER = 'UPDATE member SET id = $1, first_name = $2, last_name = $3, email = $4, phone = $5, resume_url = $6, subscribed = $7, pronoun_id = $8, school_id = $9, year_id = $10, degree_id = $11, member_type_id = $12 WHERE id = $1'
 
 getSchoolId = function(school) {
     // map school id
@@ -91,6 +91,28 @@ getMemberTypeId = function(member_type) {
     return member_type_id
 }
 
+getPronounId = function(pronoun) {
+    // map pronoun pronoun id
+    var pronoun_id = '1'
+    switch(pronoun) {
+        case 'He':
+            pronoun_id = '1'
+            break
+        case 'She':
+            pronoun_id = '2'
+            break
+        case 'They':
+            pronoun_id  = '3'
+            break
+        case 'Other':
+            pronoun_id = '4'
+            break
+        default:
+            pronoun_id = '1'    
+    }
+    return pronoun_id
+}
+
 
 
 module.exports = {
@@ -131,6 +153,7 @@ module.exports = {
             member.phone, 
             member.resume_url, 
             member.subscribed, 
+            getPronounId(member.pronoun),
             getSchoolId(member.school), 
             getYearId(member.year),
             getDegreeId(member.degree),
@@ -167,6 +190,7 @@ module.exports = {
             member.phone, 
             member.resume_url, 
             member.subscribed, 
+            getPronounId(member.pronoun),
             getSchoolId(member.school), 
             getYearId(member.year),
             getDegreeId(member.degree),
