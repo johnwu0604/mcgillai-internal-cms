@@ -164,6 +164,49 @@ INSERT INTO member_type (
 
 SELECT * FROM member_type;
 
+-- Pronoun 
+
+DROP TABLE IF EXISTS pronoun;
+
+CREATE TABLE pronoun (
+    id varchar(255) NOT NULL UNIQUE,
+    name varchar(255) NOT NULL
+);
+
+INSERT INTO pronoun (
+    id,
+    name
+) VALUES (
+    '1',
+    'He'
+);
+
+INSERT INTO pronoun (
+    id,
+    name
+) VALUES (
+    '2',
+    'She'
+);
+
+INSERT INTO pronoun (
+    id,
+    name
+) VALUES (
+    '3',
+    'They'
+);
+
+INSERT INTO pronoun (
+    id,
+    name
+) VALUES (
+    '4',
+    'Other'
+);
+
+SELECT * FROM pronoun;
+
 -- Member
 
 DROP TABLE IF EXISTS member;
@@ -176,6 +219,7 @@ CREATE TABLE member (
     phone varchar(255),
     resume_url varchar(255),
     subscribed boolean,
+    pronoun_id varchar(10),
     school_id varchar(10),
     year_id varchar(10),
     degree_id varchar(10),
@@ -190,6 +234,7 @@ INSERT INTO member (
     phone,
     resume_url,
     subscribed,
+    pronoun_id,
     school_id,
     year_id,
     degree_id,
@@ -202,6 +247,7 @@ INSERT INTO member (
     '1234567890',
     'https://pdf.com',
     TRUE,
+    '1',
     '1',
     '1',
     '1',

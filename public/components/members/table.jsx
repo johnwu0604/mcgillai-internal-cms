@@ -57,6 +57,7 @@ class MemberTable extends React.Component {
                 member.last_name === this.state.searchValue || member.last_name.includes(this.state.searchValue) ||
                 member.email === this.state.searchValue || member.email.includes(this.state.searchValue) ||
                 member.phone === this.state.searchValue || member.phone.includes(this.state.searchValue) ||
+                member.pronoun === this.state.searchValue || member.pronoun.includes(this.state.searchValue) ||
                 member.school === this.state.searchValue || member.school.includes(this.state.searchValue) ||
                 member.year === this.state.searchValue || member.year.includes(this.state.searchValue) ||
                 member.degree === this.state.searchValue || member.degree.includes(this.state.searchValue) ||
@@ -79,6 +80,7 @@ class MemberTable extends React.Component {
                         <td>{this.state.membersFiltered[i].phone}</td>
                         <td><a href={this.state.membersFiltered[i].resume_url} target="__blank">{this.state.membersFiltered[i].resume_url}</a></td>
                         <td>{this.state.membersFiltered[i].subscribed.toString()}</td>
+                        <td>{this.state.membersFiltered[i].pronoun}</td>
                         <td>{this.state.membersFiltered[i].school}</td>
                         <td>{this.state.membersFiltered[i].year}</td>
                         <td>{this.state.membersFiltered[i].degree}</td>
@@ -90,7 +92,7 @@ class MemberTable extends React.Component {
 
     buildCSV() {
         var table = []
-        table.push(['Student ID', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Resume URL', 'Subcribed To Newsletter', 'School', 'Year', 'Degree', 'Member Type'])
+        table.push(['Student ID', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Resume URL', 'Subcribed To Newsletter', 'Pronoun', 'School', 'Year', 'Degree', 'Member Type'])
         for (let i = 0; i < this.state.membersFiltered.length; i++) {
             var item = []
             item.push(this.state.membersFiltered[i].id)
@@ -100,6 +102,7 @@ class MemberTable extends React.Component {
             item.push(this.state.membersFiltered[i].phone)
             item.push(this.state.membersFiltered[i].resume_url)
             item.push(this.state.membersFiltered[i].subscribed.toString())
+            item.push(this.state.membersFiltered[i].pronoun)
             item.push(this.state.membersFiltered[i].school)
             item.push(this.state.membersFiltered[i].year)
             item.push(this.state.membersFiltered[i].degree)
@@ -152,6 +155,7 @@ class MemberTable extends React.Component {
                                     <th>Phone</th>
                                     <th>Resume URL</th>
                                     <th>Subscribed</th>
+                                    <th>Pronoun</th>
                                     <th>School</th>
                                     <th>Year</th>
                                     <th>Degree</th>
