@@ -247,7 +247,7 @@ INSERT INTO member (
     '1234567890',
     'https://pdf.com',
     TRUE,
-    '1'
+    '1',
     '1',
     '1',
     '1',
