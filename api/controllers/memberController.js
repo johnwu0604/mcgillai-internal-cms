@@ -4,6 +4,15 @@ var MemberService = require('../services/memberService')
 module.exports = {
 
     /**
+     * Finds a member by id
+     */
+    findMember: (req, callback) => {
+        MemberService.find(req.params.id, function (result) {
+            return callback(result)
+        })
+    },
+
+    /**
      * Retrieve all the members in the database
      *
      * @param req

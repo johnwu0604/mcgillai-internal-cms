@@ -1,6 +1,7 @@
 import React from 'react'
 import MemberTable from './components/members/table.jsx'
 import AddMember from './components/members/add.jsx'
+import UpdateMember from './components/members/update.jsx'
 import Navbar from './components/navbar.jsx'
 import Sidebar from './components/sidebar.jsx'
 import Newsletter from './components/newsletter.jsx'
@@ -26,6 +27,7 @@ class App extends React.Component {
                 <Route path="/" exact={true} render={() => { return ( <h1>Home page</h1> ) }}/>
                 <Route path="/members" component={MemberTable} />
                 <Route path="/add-member" component={AddMember} />
+                <Route path="/:id" component={UpdateMember} />
                 <Route path="/newsletter" component={Newsletter} />
               </div>
             </div>
