@@ -7,7 +7,6 @@ class AddMember extends React.Component {
     constructor() {
         super()
         this.state = {
-            form_id: '',
             form_first_name: '',
             form_last_name: '',
             form_email: '',
@@ -20,12 +19,6 @@ class AddMember extends React.Component {
             form_type: 'Subscriber',
             message: ''
         }
-    }
-
-    onIdChange(evt) {
-        this.setState({
-            form_id: evt.target.value
-        })
     }
 
     onFirstNameChange(evt) {
@@ -92,7 +85,6 @@ class AddMember extends React.Component {
         evt.preventDefault()
         var self = this
         var formData = qs.stringify({
-            'id': this.state.form_id,
             'first_name': this.state.form_first_name,
             'last_name': this.state.form_last_name,
             'email': this.state.form_email,
@@ -126,10 +118,6 @@ class AddMember extends React.Component {
             <div className="container-fluid">
                 <form onSubmit={evt => this.handleSubmit(evt)}>
                     <div className="form-row">
-                        <div className="form-group col-md-6">
-                            <label>Student Number</label>
-                            <input className="form-control" value={this.state.form_id} onChange={evt => this.onIdChange(evt)}></input>
-                        </div>
                         <div class="form-group col-md-6">
                             <label>First Name</label>
                             <input className="form-control" value={this.state.form_first_name} onChange={evt => this.onFirstNameChange(evt)}></input>

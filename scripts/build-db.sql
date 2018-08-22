@@ -215,7 +215,7 @@ CREATE TABLE member (
     id varchar(255) NOT NULL UNIQUE,
     first_name varchar(255),
     last_name varchar(255),
-    email varchar(255),
+    email varchar(255) NOT NULL UNIQUE,
     phone varchar(255),
     resume_url varchar(255),
     subscribed boolean,

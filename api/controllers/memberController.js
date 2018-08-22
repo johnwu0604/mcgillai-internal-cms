@@ -1,5 +1,6 @@
 var Member = require('../models/memberModel')
 var MemberService = require('../services/memberService')
+var UUID = require('uuid/v1')
 
 module.exports = {
 
@@ -29,7 +30,7 @@ module.exports = {
      */
     createMember: (req, callback) => {
         var member = new Member()
-        member.id = req.body.id
+        member.id = UUID()
         member.first_name = req.body.first_name,
         member.last_name = req.body.last_name,
         member.email = req.body.email,

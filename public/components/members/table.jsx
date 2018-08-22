@@ -120,7 +120,7 @@ class MemberTable extends React.Component {
                     <a className="btn btn-primary" href="/members/add">Add New Member</a>  
                 </div>  
                 <div className="col-md-6 float-right">
-                    <form className="form-inline" onSubmit={evt => this.deleteMember(evt)}>
+                    <form className="form-inline float-right" onSubmit={evt => this.deleteMember(evt)}>
                         <div className="form-group">
                             <input className="form-control" placeholder="Student ID" value={this.state.deleteMemberId} onChange={evt => this.onDeleteMemberIdChange(evt)}></input>
                         </div>
@@ -149,7 +149,7 @@ class MemberTable extends React.Component {
                             <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                             <thead>
                                 <tr>
-                                    <th>Student #</th>
+                                    <th>UUID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
