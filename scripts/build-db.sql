@@ -178,7 +178,7 @@ INSERT INTO pronoun (
     name
 ) VALUES (
     '1',
-    'He'
+    'He/Him'
 );
 
 INSERT INTO pronoun (
@@ -186,7 +186,7 @@ INSERT INTO pronoun (
     name
 ) VALUES (
     '2',
-    'She'
+    'She/Her'
 );
 
 INSERT INTO pronoun (
@@ -194,7 +194,7 @@ INSERT INTO pronoun (
     name
 ) VALUES (
     '3',
-    'They'
+    'They/Their'
 );
 
 INSERT INTO pronoun (

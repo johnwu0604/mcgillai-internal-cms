@@ -96,13 +96,13 @@ getPronounId = function(pronoun) {
     // map pronoun pronoun id
     var pronoun_id = '1'
     switch(pronoun) {
-        case 'He':
+        case 'He/Him':
             pronoun_id = '1'
             break
-        case 'She':
+        case 'She/Her':
             pronoun_id = '2'
             break
-        case 'They':
+        case 'They/Their':
             pronoun_id  = '3'
             break
         case 'Other':
