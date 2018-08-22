@@ -13,7 +13,7 @@ class AddMember extends React.Component {
             form_email: '',
             form_phone: '',
             form_resume: '',
-            form_pronoun: 'She',
+            form_pronoun: 'He',
             form_school: 'McGill',
             form_year: 'U0',
             form_degree: 'Undergraduate',
@@ -112,20 +112,7 @@ class AddMember extends React.Component {
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
             })
             .then(function (response) {
-                self.setState({
-                    form_id: '',
-                    form_first_name: '',
-                    form_last_name: '',
-                    form_email: '',
-                    form_phone: '',
-                    form_resume: '',
-                    form_pronoun: 'She',
-                    form_school: 'McGill',
-                    form_year: 'U0',
-                    form_degree: 'Undergraduate',
-                    form_type: 'Subscriber',
-                    message: 'New member successfully created!'
-                })
+                window.location.href = '/members'
             })
             .catch(function (response) {
                 self.setState({

@@ -85,6 +85,7 @@ class MemberTable extends React.Component {
                         <td>{this.state.membersFiltered[i].year}</td>
                         <td>{this.state.membersFiltered[i].degree}</td>
                         <td>{this.state.membersFiltered[i].member_type}</td>
+                        <td><a href={'/members/update/'+this.state.membersFiltered[i].id}>Update</a></td>
                        </tr>)
         }
         return table
@@ -116,7 +117,7 @@ class MemberTable extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="col-md-6 float-left">
-                    <a className="btn btn-primary" href="/add-member">Add New Member</a>  
+                    <a className="btn btn-primary" href="/members/add">Add New Member</a>  
                 </div>  
                 <div className="col-md-6 float-right">
                     <form className="form-inline" onSubmit={evt => this.deleteMember(evt)}>
@@ -160,6 +161,7 @@ class MemberTable extends React.Component {
                                     <th>Year</th>
                                     <th>Degree</th>
                                     <th>Member Type</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

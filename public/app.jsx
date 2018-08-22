@@ -25,10 +25,10 @@ class App extends React.Component {
               <Sidebar></Sidebar>
               <div id="content-wrapper">
                 <Route path="/" exact={true} render={() => { return ( <h1>Home page</h1> ) }}/>
-                <Route path="/members" component={MemberTable} />
-                <Route path="/add-member" component={AddMember} />
-                <Route path="/:id" component={UpdateMember} />
-                <Route path="/newsletter" component={Newsletter} />
+                <Route path="/members" exact={true} component={MemberTable} />
+                <Route path="/members/add" exact={true} component={AddMember} />
+                <Route path="/members/update/:id" exact={true} component={UpdateMember} />
+                <Route path="/newsletter" exact={true} component={Newsletter} />
               </div>
             </div>
           </div>
