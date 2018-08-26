@@ -13,6 +13,12 @@ module.exports = {
         })
     },
 
+    findMemberByEmail: (req, callback) => {
+        MemberService.findByEmail(req.query.email, function (result) {
+            return callback(result)
+        })
+    },
+
     /**
      * Retrieve all the members in the database
      *

@@ -115,7 +115,7 @@ class UpdateMember extends React.Component {
             'pronoun': this.state.form_pronoun,
             'school': this.state.form_school,
             'year': this.state.form_year,
-            'degreee': this.state.form_degree,
+            'degree': this.state.form_degree,
             'member_type': this.state.form_type
         })
         axios({

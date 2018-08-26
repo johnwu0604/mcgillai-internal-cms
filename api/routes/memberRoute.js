@@ -3,10 +3,19 @@ var MemberController = require('../controllers/memberController')
 module.exports = function(app) {
     
     /**
-     * Endpoint to find a new member
+     * Endpoint to find a member by id
      */
     app.get('/api/member/:id', (req, res) => {
         MemberController.findMember(req, function (member) {
+            res.status(200).send(member)
+        })
+    })
+
+    /**
+     * Endpoint to find a member by email
+     */
+    app.get('/api/member', (req, res) => {
+        MemberController.findMemberByEmail(req, function (member) {
             res.status(200).send(member)
         })
     })

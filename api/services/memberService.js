@@ -1,6 +1,8 @@
 var db = require('../../lib/db')
 const QUERY_MEMBER = 'SELECT member.id, member.first_name, member.last_name, member.email, member.phone, member.resume_url, member.subscribed, pronoun.name AS pronoun, school.name AS school, year.name AS year, degree.name AS degree, member_type.name AS member_type \
 FROM member INNER JOIN pronoun ON member.pronoun_id=pronoun.id INNER JOIN school ON member.school_id=school.id INNER JOIN year ON member.year_id=year.id INNER JOIN degree ON member.degree_id=degree.id INNER JOIN member_type ON member.member_type_id=member_type.id WHERE member.id = $1'
+const QUERY_MEMBER_EMAIL = 'SELECT member.id, member.first_name, member.last_name, member.email, member.phone, member.resume_url, member.subscribed, pronoun.name AS pronoun, school.name AS school, year.name AS year, degree.name AS degree, member_type.name AS member_type \
+FROM member INNER JOIN pronoun ON member.pronoun_id=pronoun.id INNER JOIN school ON member.school_id=school.id INNER JOIN year ON member.year_id=year.id INNER JOIN degree ON member.degree_id=degree.id INNER JOIN member_type ON member.member_type_id=member_type.id WHERE member.email = $1'
 const QUERY_ALL_MEMBERS = 'SELECT member.id, member.first_name, member.last_name, member.email, member.phone, member.resume_url, member.subscribed, pronoun.name AS pronoun, school.name AS school, year.name AS year, degree.name AS degree, member_type.name AS member_type \
 FROM member INNER JOIN pronoun ON member.pronoun_id=pronoun.id INNER JOIN school ON member.school_id=school.id INNER JOIN year ON member.year_id=year.id INNER JOIN degree ON member.degree_id=degree.id INNER JOIN member_type ON member.member_type_id=member_type.id'
 const QUERY_DELETE_MEMBER = 'DELETE FROM member WHERE id = $1'
@@ -125,6 +127,15 @@ module.exports = {
         db.query(QUERY_MEMBER, [id], function (err, data) {
             if (err) {
                 return console.error('error running query', err)
+            }
+            return callback(data.rows[0])
+        })
+    },
+
+    findByEmail: (email, callback) => {
+        db.query(QUERY_MEMBER_EMAIL, [email], function (err, data) {
+            if (err) {
+                return console.log('error running query', err)
             }
             return callback(data.rows[0])
         })
