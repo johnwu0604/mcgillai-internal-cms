@@ -19,13 +19,6 @@ app.get('/test', (req, res) => {
     res.sendStatus(200)
 })
 
-var uploadService = require('./api/services/uploadService')
-app.get('/test-upload', (req, res) => {
-    uploadService.upload('uploads/john-wu-resume.pdf', 'john-wu.pdf', function(url) {
-        res.send('Resume uploaded: ' + url)
-    })
-})
-
 require('./api/routes/memberRoute')(app)
 require('./api/routes/emailRoute')(app)
 

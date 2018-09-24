@@ -1,14 +1,13 @@
 var MemberController = require('../controllers/memberController')
 var multer = require('multer')
-var storageResume = multer.diskStorage({
-    destination: function(req, file, callback) {
-        callback(null, 'uploads/')
-    },
-    filename: function(req, file, callback) {
-        callback(null, 'resume.pdf')
+var storageResume = multer.diskStorage(
+    {
+        destination: './uploads/',
+        filename: function ( req, file, cb ) {
+            cb(null, 'resume.pdf')
+        }
     }
-})
-
+)
 var uploadResume = multer({storage: storageResume})
 
 module.exports = function(app) {
