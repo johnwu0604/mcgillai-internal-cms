@@ -1,5 +1,6 @@
 var Member = require('../models/memberModel')
 var MemberService = require('../services/memberService')
+var UploadService = require('../services/uploadService')
 var UUID = require('uuid/v1')
 
 module.exports = {
@@ -35,22 +36,27 @@ module.exports = {
      * Creates a new member in the database
      */
     createMember: (req, callback) => {
-        var member = new Member()
-        member.id = UUID()
-        member.first_name = req.body.first_name,
-        member.last_name = req.body.last_name,
-        member.email = req.body.email,
-        member.phone = req.body.phone,
-        member.resume_url = req.body.resume_url,
-        member.subscribed = req.body.subscribed,
-        member.pronoun = req.body.pronoun,
-        member.school = req.body.school,
-        member.year = req.body.year,
-        member.degree = req.body.degree, 
-        member.member_type = req.body.member_type
-        MemberService.create(member, function() {
-            MemberService.findAll(function (members) {
-                return callback(members)
+        var uuid = UUID()
+        var filename =  req.body.first_name + '_' + req.body.last_name + '_' + uuid + '.pdf'
+
+        UploadService.upload('uploads/resume.pdf', filename, function(url) {
+            var member = new Member()
+            member.id = uuid,
+            member.first_name = req.body.first_name,
+            member.last_name = req.body.last_name,
+            member.email = req.body.email,
+            member.phone = req.body.phone,
+            member.resume_url = url,
+            member.subscribed = req.body.subscribed,
+            member.pronoun = req.body.pronoun,
+            member.school = req.body.school,
+            member.year = req.body.year,
+            member.degree = req.body.degree, 
+            member.member_type = req.body.member_type
+            MemberService.create(member, function() {
+                MemberService.findAll(function (members) {
+                    return callback(members)
+                })
             })
         })
     },

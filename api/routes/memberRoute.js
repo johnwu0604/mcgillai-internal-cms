@@ -1,4 +1,15 @@
 var MemberController = require('../controllers/memberController')
+var multer = require('multer')
+var storageResume = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, 'uploads/')
+    },
+    filename: function(req, file, callback) {
+        callback(null, 'resume.pdf')
+    }
+})
+
+var uploadResume = multer({storage: storageResume})
 
 module.exports = function(app) {
     
@@ -32,7 +43,7 @@ module.exports = function(app) {
     /**
      * Endpoint to add a new member
      */
-    app.post('/api/member', (req, res) => {
+    app.post('/api/member', uploadResume.single('resume'), (req, res) => {
         MemberController.createMember(req, function (members) {
             res.status(200).send(members)
         })
