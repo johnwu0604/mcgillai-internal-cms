@@ -15,6 +15,13 @@ app.use(function (req, res, next) {
   next()
 })
 
+app.get('/test', (req, res) => {
+    res.sendStatus(200)
+})
+
+require('./api/routes/memberRoute')(app)
+require('./api/routes/emailRoute')(app)
+
 app.get('/*', function response(req, res) {
   res.sendFile(__dirname + '/public/index.html')
 })
